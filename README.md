@@ -1,51 +1,51 @@
-# Day 7 — Reconnaissance Fundamentals
+# Day 8 — Nmap and Wireshark Basics
 
 ## Aim
-Understand information gathering and distinguish passive reconnaissance from active reconnaissance.
+Learn what network scanning and packet analysis do, then practise only against the local computer or an explicitly authorised lab.
 
-## Key concepts
-**Reconnaissance** is the information-gathering phase of a security assessment.
+## Nmap
+Nmap is a network discovery and security auditing tool. It can identify hosts, open ports and service information. A port is a numbered communication endpoint used by network services.
 
-- **Passive reconnaissance:** Collects information from publicly available sources without directly interacting with the target's systems. Examples include reviewing an organisation's public website, public documentation and public DNS records.
-- **Active reconnaissance:** Sends requests or probes to a target system, such as checking a service on an authorised host. It is more likely to be logged and requires permission.
-
-## DNS basics
-DNS (Domain Name System) translates domain names into IP addresses. Common record types:
-- `A`: IPv4 address
-- `AAAA`: IPv6 address
-- `MX`: mail server
-- `NS`: authoritative name server
-- `TXT`: text data, often used for domain verification and email-security policies
-- `CNAME`: alias to another domain name
-
-## Safe practice
-For a simple DNS lookup of a public example domain:
+### Safe local exercise
+On your own computer:
 ```bash
-nslookup example.com
+nmap 127.0.0.1
 ```
-You may also use:
+Optional service identification on the same local machine:
 ```bash
-dig example.com
+nmap -sV 127.0.0.1
 ```
-These commands request DNS information; do not use them to enumerate private or sensitive domains without permission.
+`127.0.0.1` is the IPv4 loopback address, which refers to your own computer. Do not replace it with a public or third-party address unless you have explicit authorisation.
 
-## Practical worksheet
-1. Write the domain used for the lookup: __________________
-2. Record the DNS tool used: __________________
-3. Record the returned address/record type, if shown: __________________
-4. Explain in your own words what DNS does: __________________
-5. Was the activity passive or active? Explain: __________________
+## Wireshark
+Wireshark is a packet analyser. It captures and displays network packets to help users understand protocols and troubleshoot networks.
 
-## Compare
-| Passive reconnaissance | Active reconnaissance |
-|---|---|
-| Uses public/third-party information sources | Directly interacts with target systems |
-| Usually lower visibility to the target | May be logged or trigger alerts |
-| Still must respect privacy and laws | Requires explicit authorisation |
+### Safe practice
+1. Open Wireshark.
+2. Select an interface belonging to your own computer.
+3. Start a short capture while generating ordinary traffic, such as opening a local page or performing a permitted DNS lookup.
+4. Stop the capture.
+5. Inspect packet details and identify protocol names.
+6. Save a small sample only if it contains no credentials or personal information; otherwise use a screenshot with sensitive data hidden.
+
+Useful display filters:
+- `dns` — DNS packets
+- `tcp` — TCP packets
+- `udp` — UDP packets
+- `http` — HTTP packets, where present
+
+## Observation record
+- Device / lab used: __________________
+- Nmap command: __________________
+- Ports reported on localhost: __________________
+- Wireshark interface: __________________
+- Protocols observed: __________________
+- What did you learn from the capture? __________________
 
 ## Review questions
-1. Define reconnaissance.
-2. Differentiate passive and active reconnaissance.
-3. What is DNS?
-4. Explain A, AAAA, MX and NS records.
-5. Why is written permission important before active reconnaissance?
+1. What is Nmap used for?
+2. What is a port?
+3. What does `127.0.0.1` represent?
+4. What is packet analysis?
+5. Differentiate TCP and UDP at a basic level.
+6. Why should captures be checked for sensitive information before sharing?

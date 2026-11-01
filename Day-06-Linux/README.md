@@ -1,0 +1,1 @@
+On Day 6, I practised Linux fundamentals, including basic terminal commands, file and directory management, user information, file permissions, and process management. I used commands such as `pwd`, `ls`, `cd`, `mkdir`, `touch`, `cat`, `chmod`, `whoami`, and `ps` to understand how Linux works and learned basic Linux security concepts.
